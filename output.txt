@@ -1,0 +1,10 @@
+SELECTION SORT
+Elements:
+23 1 metal
+13 50 metal
+12 34 metal
+MERGE SORT
+Elements:
+23 1 metal
+12 34 metal
+13 50 metal
