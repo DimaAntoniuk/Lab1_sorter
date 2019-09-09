@@ -2,6 +2,8 @@ from models.Vase import Vase
 import time
 
 def merge(A, B):
+    global merge_swap
+    global merge_compare
     a = b = 0
     out = []
     while a < len(A) and b < len(B):
@@ -9,9 +11,11 @@ def merge(A, B):
         if A[a].weight < B[b].weight:
             out.append(A[a])
             a += 1
+            merge_swap += 1
         else:
             out.append(B[b])
             b += 1
+            merge_swap += 1
     out += A[a:] + B[b:]
     return out
 
@@ -22,6 +26,8 @@ def mergeSort(A):
     return merge(mergeSort(A[:mid]), mergeSort(A[mid:]))
 
 def selectionSort(A):
+    global selection_swap
+    global selection_compare
     for i in range(len(A)):
         min_i = i
         for j in range(i+1, len(A)):
@@ -55,7 +61,7 @@ with File('input.txt', 'r') as input:
         if(i % 3 == 0):
             arr.append(Vase(volume, weight, field))
 
-selection_start = time.time()
+selection_begin = time.time()
 selection_compare = 0
 selection_swap = 0
 selectionSort(arr)
@@ -63,9 +69,9 @@ selection_finish = time.time()
 
 with File('output.txt', 'a+') as output:
     output.write('SELECTION SORT\n')
-    output.write('Time:' + str(selection_finish-selection_begin) + '\n')
-    output.write('Compares:' + str(selection_compare) + '\n')
-    output.write('Swaps:' + str(selection_swap) + '\n')
+    output.write('Time: ' + str(selection_finish-selection_begin) + '\n')
+    output.write('Compares: ' + str(selection_compare) + '\n')
+    output.write('Swaps: ' + str(selection_swap) + '\n')
     output.write('Elements:\n')
     for a in arr:
         output.write(str(a))
@@ -80,9 +86,9 @@ merge_finish = time.time()
 
 with File('output.txt', 'a+') as output:
     output.write('MERGE SORT\n')
-    output.write('Time:' + str(merge_finish-merge_begin) + '\n')
-    output.write('Compares' + str(merge_compare) + '\n')
-    output.write('Swaps' + srt(merge_swap) + '\n')
+    output.write('Time: ' + str(merge_finish - merge_begin) + '\n')
+    output.write('Compares: ' + str(merge_compare) + '\n')
+    output.write('Swaps: ' + str(merge_swap) + '\n')
     output.write('Elements:\n')
     for a in arr:
         output.write(str(a))

@@ -1,9 +1,31 @@
 SELECTION SORT
+Time: 0.0
+Compares: 3
+Swaps: 3
 Elements:
 23 1 metal
 13 50 metal
 12 34 metal
 MERGE SORT
+Time: 1568050024.0988104:1568050024.0988104
+Compares: 2
+Swaps: 2
+Elements:
+23 1 metal
+12 34 metal
+13 50 metal
+SELECTION SORT
+Time: 0.12495303153991699
+Compares: 3
+Swaps: 3
+Elements:
+23 1 metal
+13 50 metal
+12 34 metal
+MERGE SORT
+Time: 0.0
+Compares: 2
+Swaps: 2
 Elements:
 23 1 metal
 12 34 metal
