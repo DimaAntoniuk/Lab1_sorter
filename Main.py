@@ -8,7 +8,7 @@ def merge(A, B):
     out = []
     while a < len(A) and b < len(B):
         merge_compare += 1
-        if A[a].weight < B[b].weight:
+        if A[a].weight <= B[b].weight:
             out.append(A[a])
             a += 1
             merge_swap += 1
@@ -17,6 +17,7 @@ def merge(A, B):
             b += 1
             merge_swap += 1
     out += A[a:] + B[b:]
+    merge_swap += len(A)-a + len(B)-b
     return out
 
 def mergeSort(A):
@@ -37,17 +38,9 @@ def selectionSort(A):
         A[i], A[min_i] = A[min_i], A[i]
         selection_swap += 1
 
-class File(object):
-    def __init__(self, file_name, method):
-        self.file_obj = open(file_name, method)
-    def __enter__(self):
-        return self.file_obj
-    def __exit__(self, type, value, traceback):
-
-        self.file_obj.close()
 arr = []
 
-with File('input.txt', 'r') as input:
+with open('input.txt', 'r') as input:
     fields = input.read().split(',')
     i = 0
     volume = 0
@@ -67,7 +60,7 @@ selection_swap = 0
 selectionSort(arr)
 selection_finish = time.time()
 
-with File('output.txt', 'a+') as output:
+with open('output.txt', 'a+') as output:
     output.write('SELECTION SORT\n')
     output.write('Time: ' + str(selection_finish-selection_begin) + '\n')
     output.write('Compares: ' + str(selection_compare) + '\n')
@@ -84,7 +77,7 @@ merge_swap = 0
 arr = mergeSort(arr)
 merge_finish = time.time()
 
-with File('output.txt', 'a+') as output:
+with open('output.txt', 'a+') as output:
     output.write('MERGE SORT\n')
     output.write('Time: ' + str(merge_finish - merge_begin) + '\n')
     output.write('Compares: ' + str(merge_compare) + '\n')
